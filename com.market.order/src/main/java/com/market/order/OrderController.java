@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class OrderController {
 
+    private final OrderService orderService;
+
     @GetMapping("/order/{id}")
     public String order(@PathVariable("id") String id) {
+
+        orderService.createOrder(id);
 
         return "Order Id: " + id;
     }
